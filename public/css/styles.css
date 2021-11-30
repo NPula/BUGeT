@@ -1,14 +1,17 @@
 
+/******************************
+GLOBALS
+******************************/
 :root {
-    --clr-white: #FFF;
+    --clr-default: #FFF;
     --clr-text-dark: #142640;
     --clr-text-light: #2eabe2;
     --clr-header: #f1f6ff;
-    --clr-header-rgba: rgba(241, 246, 255, 100);
+    --clr-header-rgba: rgba(241, 246, 255, .7);
     --clr-footer: #bdbdbd;
     --clr-accent: #eb6c38;
     
-    --ff-primary: 'Helvetica' 'sans-serif'; 
+    --ff-primary: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 *, 
@@ -30,14 +33,17 @@ html {
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: var(clr-default);
     color: var(--clr-text-dark);
     background-image: url("../images/bg_1.png");
     font-family: var(--ff-primary);
+    letter-spacing: .07em;
 }
 
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -50,72 +56,71 @@ img {
 }
 
 .container {
-    margin: 25px 25px 25px 25px;
+    margin: 3em 3em 3em 3em;
+}
+
+.nav-container {
+    margin: 0 2em;
 }
 
 /******************************
 NAVIGATION
 ******************************/
 nav {
-    /*background-color: var(--clr-header);*/
-    background-color: rgba(241, 246, 255, .7);
+    background-color: var(--clr-header-rgba);
     display: flex; 
-    /*height: 100px; */
-    height: 220px;
-}
-
-.nav-main {
-    justify-content: center;
 }
 
 .logo {
-    /*
-    width: 70px;
-    height: 70px;
-    */
-    margin: auto;
-    margin-left: 35px;
     color: var(--clr-text-light);
     font-size: 3rem;
+    letter-spacing: .1em;
 }
 
 .nav-list-left {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.nav-item-right {
-    width: 150px;
+    text-transform: uppercase;
 }
 
 .nav-item {
-    margin-right: 70px;
+    margin: .4em 0;
+}
+
+.nav-item:hover {
+    color: var(--clr-accent);
+}
+
+.nav-list-right {
+    text-transform: uppercase;
+    margin: 1em 0;
 }
 
 .nav-burger {
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    margin-right: 50px;
-
+    margin-right: 3em;
 }
 
 @media(min-width: 950px) {
+
     nav {
-        height: 100px;
+        padding: 1em;
     }
 
     .nav-main {
         display: flex;
         justify-content: center;
-        margin-top: 0;
+        margin-top: 0em;
         width: 100%;
     }
 
     .nav-list-left {
         flex-direction: row;
         margin: auto;
+        width: 50%;
+        justify-content: space-around;
     }
 
     .nav-list-right {
@@ -137,9 +142,7 @@ SECTIONS
 MAIN
 ******************************/
 .main-section {
-    /*margin: 30px 0px; */
-    margin: 50px 50px;
-    display: inline-block;
+    margin: 3em 3em;
 }
 
 .main-section h1 {
@@ -147,35 +150,36 @@ MAIN
 }
 
 .main-page-image {
-    width: 400px;
+    min-width: 400px;
+    width: 50%;
 }
 
 .main-section form {
-    margin-top: 25px;
+    margin-top: 2em;
 }
 
 @media(min-width: 768px) {
     .main-section {
         display: flex;
         width: 90%;
-        height: 90%;
         justify-content: center;
     }
     .main-section .main-left {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-right: 25px;
+        margin-right: 5em;
+        width: 50ch;
     }
 
     .main-page-image {
-        margin-left: 25px;
+        margin-left: 5em;
     }
 }
 
 @media(min-width: 1024px) {
     .main-page-image {
-        width: 550px;
+        max-width: 550px;
     }
 }
 
@@ -184,10 +188,11 @@ CARDS
 ******************************/
 .card {
     background-color: var(--clr-white);
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    margin-bottom: 15px;
+    width: 60%;
+    max-width: 400px;
+    min-height: 25vh;
+    margin: 1em auto;
+
     border-radius: 10px;
     box-shadow: 0px 10px 51px 3px rgb(0 0 0 / 15%);
 }
@@ -199,9 +204,9 @@ CARDS
     }
 
     .card {
-        width: 270px;
-        height: 270px;
-        margin: 25px 25px;
+        width: calc(100% / 3);
+        min-height: 25vh;
+        margin: 2em 2em;
     }
 }
 
@@ -210,11 +215,11 @@ FOOTER
 ******************************/
 footer {
     background-color: var(--clr-footer);
-    height: 200px;
+    min-height: 25vh;
 }
 
 /******************************
-Utilities
+UTILS
 ******************************/
 .text-center {
     text-align: center;
@@ -231,6 +236,10 @@ Utilities
     font-weight: 900;
 }
 
+.btn-large-primary:hover {
+    background-color: var(--clr-accent);
+}
+
 .btn-small-accent {
     background-color: var(--clr-accent);
     border-radius: 5px;
@@ -240,4 +249,8 @@ Utilities
     display: inline-block;
     font-size: 1rem;
     font-weight: 900;
+}
+
+.btn-small-accent:hover {
+    background-color: var(--clr-text-light);
 }
