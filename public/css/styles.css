@@ -60,6 +60,7 @@ img {
 }
 
 .nav-container {
+    display: flex;
     margin: 0 2em;
 }
 
@@ -68,7 +69,13 @@ NAVIGATION
 ******************************/
 nav {
     background-color: var(--clr-header-rgba);
-    display: flex; 
+
+    /* can remove this if position shouldnt be fixed to the top. */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 666;
+    /***************/
 }
 
 .logo {
@@ -78,7 +85,8 @@ nav {
 }
 
 .nav-list-left {
-    display: flex;
+    /*display: flex; */ /* this will be toggled on through js */
+    display: none;
     flex-direction: column;
     text-transform: uppercase;
 }
@@ -96,11 +104,22 @@ nav {
     margin: 1em 0;
 }
 
-.nav-burger {
+.nav-toggle {
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    margin-right: 3em;
+    margin: .7em 3em;
+}
+
+.nav-toggle-container div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--clr-text-dark);
+    margin: 5px;
+}
+
+.nav-active {
+    display: flex;
 }
 
 @media(min-width: 950px) {
@@ -117,6 +136,8 @@ nav {
     }
 
     .nav-list-left {
+        /* since we change the display in javascript we should make sure this is always flex */
+        display: flex;
         flex-direction: row;
         margin: auto;
         width: 50%;
@@ -129,7 +150,7 @@ nav {
         justify-content: center;
     }
 
-    .nav-burger {
+    .nav-toggle {
         display: none;
     }
 }
@@ -142,7 +163,8 @@ SECTIONS
 MAIN
 ******************************/
 .main-section {
-    margin: 3em 3em;
+    /* set to margin: 3em 3em if navbar shouldnt be fixed to the top */
+    margin: 20em 3em;
 }
 
 .main-section h1 {
